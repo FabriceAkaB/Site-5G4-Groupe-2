@@ -10,7 +10,26 @@ weight = 1
 #### Premier prompt formuler  pour chatgpt 5.1
 > Je veux une analyse complète, précise, technique mais pédagogique sur la technologie suivante : MediaPipe Hands (Google) et son rôle dans : le suivi de la main en temps réel la téléopération des mains robotiques l’apprentissage par imitation (Learning from Demonstration) les humanoïdes modernes (Tesla Optimus, Figure 02, Unitree G1, etc.)
 
-ici je vais mettre une image de la réponse de chatgpt
+<details>
+<summary>▶ Voici la réponse du LLM</summary>
+
+![Réponse du LLM 1](rep_llm1.png)
+
+![Réponse du LLM 2](rep_llm2.png)
+
+![Réponse du LLM 3](rep_llm3.png)
+
+![Réponse du LLM 4](rep_llm4.png)
+
+![Réponse du LLM 5](rep_llm5.png)
+
+![Réponse du LLM 6](rep_llm6.png)
+
+![Réponse du LLM 7](rep_llm7.png)
+
+![Réponse du LLM 8](rep_llm8.png)
+
+</details>
 
 > La réponse fournie est très complète. La raison pour laquelle la réponse est complète et qu’elle m’a permis de comprendre l’essentiel de cette technologie, c’est que l’explication est vraiment adaptée directement à l’application que je voulais : la robotique. J’ai compris que le MediaPipe est beaucoup utilisé pour des petits jeux en réalités augmentées, mais moi je voulais vraiment comprendre comment cette technologie peut être utile dans la robotique et la téléopération d’une main robotique. Il m’a même donné des images qui sont disponibles dans d’autres sites, comme des graphiques qui me permettent vraiment de comprendre la conception et comment l’outil fonctionne. Comme question qui suit, je lui ai demandé si cet outil peut être utilisé sur tout le corps et non seulement avec la main. Il m’a répondu que oui, c’est possible. J’ai par la suite demandé quelles sont les limites de cette technologie.
 

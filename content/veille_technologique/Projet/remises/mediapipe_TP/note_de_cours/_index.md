@@ -185,11 +185,11 @@ Cette section explique plus en détail comment utiliser MediaPipe Hands dans un 
 
 #### 9.1. Installation
 - Installer Python 3.10 ou 3.11 ;
-- cr?er un environnement ;
+- créer un environnement ;
 - installer `mediapipe`, `opencv-python`, `numpy`.
 
 #### 9.2. Autoriser la webcam
-Sur Windows, il faut autoriser Python ? acc?der ? la cam?ra. Dans Visual Studio Code, choisir l'interpr?teur Python du bon environnement.
+Sur Windows, il faut autoriser Python à accéder à la caméra. Dans Visual Studio Code, choisir l'interpréteur Python du bon environnement.
 
 #### 9.3. Extraction des landmarks
 `results.multi_hand_landmarks` retourne les points.
