@@ -20,7 +20,7 @@ Dans cet atelier, on utilise la librairie **MediaPipe Hands** (Google) pour :
 * contrôler une **main robotique virtuelle en 2D** dessinée à côté du flux de la webcam
 
 Le résultat final à l’écran :
-
+![Miniature de l'atelier](miniature.png)
 * à gauche : la webcam avec la main réelle + les landmarks MediaPipe
 * à droite : une main stylisée de robot (paume + doigts) et des barres verticales qui montent/descendent selon l’ouverture des doigts.
 
@@ -482,3 +482,156 @@ Même si ton atelier reste 2D, tu peux expliquer en conclusion :
 
   * une main 3D dans Unity / Unreal / Three.js
   * ou une vraie main robotique avec des servos, via Arduino / ROS.
+
+<details>
+<summary>▶ Corrigé complet de l'atelier (code Python)</summary>
+
+```python
+import cv2
+import mediapipe as mp
+import numpy as np
+import math
+
+mp_hands = mp.solutions.hands
+mp_draw = mp.solutions.drawing_utils
+
+hands = mp_hands.Hands(
+    static_image_mode=False,
+    max_num_hands=1,
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5,
+)
+
+cap = cv2.VideoCapture(0)
+
+
+def compute_finger_values(hand_landmarks):
+    lm = hand_landmarks.landmark
+    wrist = lm[0]
+
+    thumb_tip = lm[4]
+    index_tip = lm[8]
+    middle_tip = lm[12]
+    ring_tip = lm[16]
+    pinky_tip = lm[20]
+
+    def dist(a, b):
+        return math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
+
+    d_thumb = dist(thumb_tip, wrist)
+    d_index = dist(index_tip, wrist)
+    d_middle = dist(middle_tip, wrist)
+    d_ring = dist(ring_tip, wrist)
+    d_pinky = dist(pinky_tip, wrist)
+
+    MIN_D = 0.10
+    MAX_D = 0.35
+
+    def norm(d):
+        v = (MAX_D - d) / (MAX_D - MIN_D)
+        v = max(0.0, min(1.0, v))
+        return v
+
+    values = {
+        "thumb": norm(d_thumb),
+        "index": norm(d_index),
+        "middle": norm(d_middle),
+        "ring": norm(d_ring),
+        "pinky": norm(d_pinky),
+    }
+    return values
+
+
+while True:
+    success, frame = cap.read()
+    if not success:
+        break
+
+    frame = cv2.flip(frame, 1)
+    frame = cv2.resize(frame, (480, 480))
+
+    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    results = hands.process(rgb)
+
+    finger_values = None
+
+    if results.multi_hand_landmarks:
+        for hand_landmarks in results.multi_hand_landmarks:
+            mp_draw.draw_landmarks(
+                frame, hand_landmarks, mp_hands.HAND_CONNECTIONS
+            )
+            finger_values = compute_finger_values(hand_landmarks)
+
+    robot_canvas = np.zeros((480, 480, 3), dtype=np.uint8)
+
+    if finger_values is not None:
+        fingers = ["thumb", "index", "middle", "ring", "pinky"]
+        base_y = 430
+        max_height = 300
+        bar_width = 50
+        spacing = 20
+        start_x = 40
+
+        for i, name in enumerate(fingers):
+            v = finger_values[name]
+            h = int(v * max_height)
+
+            x1 = start_x + i * (bar_width + spacing)
+            y1 = base_y
+            x2 = x1 + bar_width
+            y2 = base_y - h
+
+            cv2.rectangle(robot_canvas, (x1, y2), (x2, y1), (0, 255, 0), -1)
+
+            cv2.rectangle(
+                robot_canvas,
+                (x1, base_y - max_height),
+                (x2, base_y),
+                (255, 255, 255),
+                2,
+            )
+
+            cv2.putText(
+                robot_canvas,
+                name,
+                (x1, base_y - max_height - 10),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                (255, 255, 255),
+                1,
+                cv2.LINE_AA,
+            )
+
+        cv2.putText(
+            robot_canvas,
+            "Main robotique 2D (simulation)",
+            (30, 40),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.7,
+            (255, 255, 255),
+            2,
+            cv2.LINE_AA,
+        )
+    else:
+        cv2.putText(
+            robot_canvas,
+            "Aucune main detectee",
+            (100, 240),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.7,
+            (0, 0, 255),
+            2,
+            cv2.LINE_AA,
+        )
+
+    combined = np.hstack((frame, robot_canvas))
+    cv2.imshow("Teleoperation virtuelle - MediaPipe Hands", combined)
+
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+</details>

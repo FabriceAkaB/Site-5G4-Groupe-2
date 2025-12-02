@@ -11,7 +11,7 @@ weight = 1
 > Je veux une analyse complète, précise, technique mais pédagogique sur la technologie suivante : MediaPipe Hands (Google) et son rôle dans : le suivi de la main en temps réel la téléopération des mains robotiques l’apprentissage par imitation (Learning from Demonstration) les humanoïdes modernes (Tesla Optimus, Figure 02, Unitree G1, etc.)
 
 <details>
-<summary>▶ Voici la réponse du LLM</summary>
+<summary>▶ Cliquer pour voir la réponse du LLM</summary>
 
 ![Réponse du LLM 1](rep_llm1.png)
 
@@ -81,6 +81,7 @@ J’ai juste naviguer un peu sur twitter avec le query mediapipe pour voir les a
 https://x.com/pham_blnh/status/1975594015014969722?s=20
 
 > Dans ce lien il y a une personne qui a fait une simulation de mixing de dg avec mediapipe en réalité augmenté. Et y’a plein d’autre facon unique
+https://x.com/pattssun/status/1973781471560421569?s=20
 
 ### Conclusion de la veille
 
