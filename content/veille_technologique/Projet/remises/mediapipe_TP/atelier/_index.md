@@ -482,7 +482,3 @@ Même si ton atelier reste 2D, tu peux expliquer en conclusion :
 
   * une main 3D dans Unity / Unreal / Three.js
   * ou une vraie main robotique avec des servos, via Arduino / ROS.
-
----
-
-Si tu veux, je peux te faire une **mini conclusion** prête à coller dans ton rapport, genre “Ce que j’ai appris dans cet atelier” + “Lien avec ma veille technologique sur MediaPipe Hands et les humanoïdes modernes”.
