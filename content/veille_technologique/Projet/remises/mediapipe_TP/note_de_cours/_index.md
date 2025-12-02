@@ -249,7 +249,7 @@ MediaPipe représente donc une excellente porte d’entrée vers la robotique, l
 - **TensorFlow Lite** : version légère de TensorFlow optimisée pour mobile.
 
 #### 12.2. Index complet des 21 landmarks
-(INSERTION IMAGE ICI)
+![Hand landmark](hand-landmarks.png)
 
 #### 12.3. Comparaison MediaPipe vs OpenPose
 - MediaPipe : rapide, léger, simple ;
