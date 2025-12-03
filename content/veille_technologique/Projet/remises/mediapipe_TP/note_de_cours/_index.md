@@ -10,6 +10,8 @@ Notes de cours sur votre sujet.
 ### 1. Introduction générale
 MediaPipe est une technologie développée par Google qui permet d’analyser des images ou des vidéos en temps réel et d’extraire des informations utiles grâce à des modèles d’intelligence artificielle optimisés. Elle est devenue rapidement populaire parce qu’elle permet de faire de la vision par ordinateur « avancée » sans avoir besoin d’un ordinateur puissant ou d’une carte graphique.
 
+<img src="mediapipelogo.jpg" alt="Logo MediaPipe" style="max-height:200px; width:auto;">
+
 Dans le monde de la robotique et de l’interaction homme-machine, comprendre la position et les mouvements de la main est essentiel. La main humaine est capable de précision, d’expression, de manipulation, et c’est l’un des organes les plus utilisés pour contrôler un robot ou une interface. C’est pour cette raison que MediaPipe Hands, le module de détection et de suivi de mains, est devenu rapidement une référence.
 
 L’objectif de ces notes de cours est d’expliquer clairement les fondements théoriques, le fonctionnement technique et les applications pratiques de MediaPipe Hands. On va aussi voir comment cette technologie s’intègre dans des systèmes plus avancés comme les robots humanoïdes, et pourquoi elle est très utilisée dans les projets étudiants, les laboratoires d’innovation et même dans certaines startups.
@@ -48,6 +50,7 @@ MediaPipe Hands génère une liste de 21 points clés (appelés landmarks) qui d
 - les articulations principales ;
 - les phalanges ;
 - la pointe de chaque doigt.
+![Hand landmar exemple](landmarkExplain.jpg)
 
 Chaque landmark contient des coordonnées normalisées (x, y, z) :
 - **x** : position horizontale entre 0 et 1 ;
@@ -66,6 +69,8 @@ Cette architecture permet de :
 - accélérer le traitement ;
 - améliorer la stabilité ;
 - obtenir une meilleure précision sur les doigts.
+
+<img src="graphprocessingframwork.png" alt="Graph processing framework" style="max-height:500px; width:auto;">
 
 #### 3.3. Types de données retournées
 Le modèle retourne :
@@ -147,6 +152,8 @@ MediaPipe propose plusieurs modules :
 
 MediaPipe Holistic est capable de suivre tout le corps en temps réel, ce qui en fait une alternative très accessible aux systèmes de motion capture classiques.
 
+![body](mediapipebody.jpg)
+
 Applications :
 - avatars 3D ;
 - jeux vidéo ;
@@ -160,6 +167,8 @@ Applications :
 - jeux qui utilisent les gestes de la main ;
 - expériences de réalité augmentée.
 
+![ar](realiteaugmenteExemple.gif)
+
 #### 8.2. Interfaces main à ordinateur
 - contrôle du curseur ;
 - navigation avec gestes ;
@@ -171,6 +180,8 @@ MediaPipe est utilisé pour :
 - contrôler une main articulée ;
 - faire de l’apprentissage par imitation ;
 - enregistrer des gestes humains pour entraîner des modèles.
+
+<img src="robothandcontrol.gif" alt="Robot hand control" style="max-height:280px; width:auto;">
 
 #### 8.4. Robots humanoïdes
 Même si les robots avancés comme Tesla Optimus utilisent des modèles plus complexes, le principe est similaire :
@@ -208,7 +219,7 @@ Avec les landmarks, on peut :
 - mesurer des angles.
 
 #### 9.5. Dessin d’une main robotique
-Ton atelier en 2D utilise les landmarks pour reconstruire graphiquement une main artificielle.
+Dans l'atelier on va utiliser les landmarks pour reconstruire graphiquement une main artificielle.
 
 #### 9.6. Filtrage
 Pour stabiliser les mouvements, on peut utiliser :
@@ -257,8 +268,7 @@ MediaPipe représente donc une excellente porte d’entrée vers la robotique, l
 
 #### 12.4. Liens externes
 - Google MediaPipe documentation ;
-- TensorFlow Lite ;
-- Exemples de projets GitHub.
+https://research.google/blog/on-device-real-time-hand-tracking-with-mediapipe/
 
 ---
 
